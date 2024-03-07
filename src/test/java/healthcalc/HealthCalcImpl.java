@@ -8,7 +8,7 @@ public class HealthCalcImpl {
             throw new IllegalArgumentException("La altura debe ser un valor positivo.");
         }
         // Restriccion para la altura: supera los limites operables
-        if(height<=Float.MAX_VALUE){
+        if(height>=Integer.MAX_VALUE){
             throw new IllegalArgumentException("La altura supera los limites operables.");
         }
 
@@ -38,7 +38,7 @@ public class HealthCalcImpl {
             throw new IllegalArgumentException("El peso debe ser positivo.");
         }
          // Restriccion para el peso: supera los limites operables
-         if(weight<=Float.MAX_VALUE){
+         if(weight>=Float.MAX_VALUE){
             throw new IllegalArgumentException("El peso supera los limites operables.");
         }
        
@@ -47,7 +47,7 @@ public class HealthCalcImpl {
             throw new IllegalArgumentException("La altura debe ser positiva.");
         }
         // Restriccion para la altura: supera los limites operables
-        if(height<=Float.MAX_VALUE){
+        if(height>=Float.MAX_VALUE){
             throw new IllegalArgumentException("La altura supera los limites operables.");
         }
         // Restriccion para la edad: <=0
@@ -55,7 +55,7 @@ public class HealthCalcImpl {
             throw new IllegalArgumentException("La edad debe ser positiva.");
         }
         // Restriccion para la edad: supera los limites operables
-        if(age<=Integer.MAX_VALUE){
+        if(age>=Integer.MAX_VALUE){
             throw new IllegalArgumentException("La edad supera los limites operables.");
         }
         // Restricciones para el género
