@@ -27,11 +27,14 @@ public class HealthCalcImpl {
 
         // Asegurarse de que el peso ideal sea positivo
         if (idealWeight <= 0) {
-            throw new IllegalStateException("El peso ideal calculado es no válido.");
+            throw new IllegalArgumentException("El peso ideal calculado es no válido.");
         }
 
         return idealWeight;
     }
+
+
+
     public float basalMetabolicRate(float weight, int height, char gender, int age) {
         // Restriccion para el peso: <=0
         if (weight <= 0 ) {
@@ -47,7 +50,7 @@ public class HealthCalcImpl {
             throw new IllegalArgumentException("La altura debe ser positiva.");
         }
         // Restriccion para la altura: supera los limites operables
-        if(height>=Float.MAX_VALUE){
+        if(height>=Integer.MAX_VALUE){
             throw new IllegalArgumentException("La altura supera los limites operables.");
         }
         // Restriccion para la edad: <=0
