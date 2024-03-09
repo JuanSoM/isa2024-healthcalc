@@ -105,6 +105,7 @@ Este conjunto de pruebas tiene como objetivo validar los métodos de la `HealthC
 
 # Práctica 2 - Diagrama Casos de Uso
 
+![P2](https://github.com/JuanSoM/isa2024-healthcalc/assets/160397659/bcaa6e01-812e-4633-8195-6014d38308e1)
 
 ## Especificación del Caso de Uso - idealWeight:
 
@@ -161,4 +162,3 @@ Este conjunto de pruebas tiene como objetivo validar los métodos de la `HealthC
   - El sistema calcula un peso ideal negativo.
   - Se muestra un mensaje de error indicando que el peso ideal calculado no es válido.
 
-![alt text](P2.PNG)
