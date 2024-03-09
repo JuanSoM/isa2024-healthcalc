@@ -1,6 +1,6 @@
 # isa2024-healtcalc
 Health calculator
-# Pruebas para la Calculadora de Salud
+# Práctica 1 - Pruebas para la Calculadora de Salud
 
 Este conjunto de pruebas tiene como objetivo validar los métodos de la `HealthCalcImpl` que calculan el peso ideal (`idealWeight`) y la tasa metabólica basal (`basalMetabolicRate`). Aquí se detallan los casos de prueba y su significado.
 
@@ -102,3 +102,63 @@ Este conjunto de pruebas tiene como objetivo validar los métodos de la `HealthC
 ![p1SoftAvan](https://github.com/JuanSoM/isa2024-healthcalc/assets/160397659/0b689b01-163f-416a-9c2b-74512e27675a)
 ![p1SoftAvan2](https://github.com/JuanSoM/isa2024-healthcalc/assets/160397659/54d7d58e-c966-4bbe-8416-b14c7a57e072)
 
+
+# Práctica 2 - Diagrama Casos de Uso
+
+
+## Especificación del Caso de Uso - idealWeight:
+
+**Nombre:** idealWeight
+
+**Stakeholders:**
+- Usuario: La persona que utiliza la calculadora de salud para obtener su peso ideal.
+- Desarrollador: Encargado de mantener y mejorar la calculadora.
+
+**Actor Principal:** Usuario
+
+**Alcance (Scope):**
+- Este caso de uso se centra en el cálculo del peso ideal de una persona utilizando la fórmula de Lorentz.
+
+**Nivel de Abstracción:**
+- Nivel de Caso de Uso.
+
+**Escenario Principal:**
+1. El usuario proporciona la altura y el género.
+2. El sistema verifica que la altura sea un valor positivo y que el género sea 'M' o 'F'.
+3. El sistema utiliza la fórmula de Lorentz para calcular el peso ideal.
+4. El sistema retorna el peso ideal calculado al usuario.
+
+**Precondición:**
+- El usuario ha ingresado una altura positiva y un género válido ('M' o 'F').
+
+**Garantía Mínima:**
+- El sistema no permite la entrada de datos inválidos y garantiza un cálculo preciso.
+
+**Garantía de Éxito:**
+- El sistema devuelve un resultado preciso y positivo que representa el peso ideal del usuario.
+
+**Trigger:**
+- El usuario desea conocer su peso ideal.
+
+**Extensiones (Escenarios Alternativos):**
+- **Altura Negativa:**
+  - El sistema detecta que la altura ingresada es negativa.
+  - Se muestra un mensaje de error indicando que la altura debe ser un valor positivo.
+  
+- **Altura Cero:**
+  - El sistema detecta que la altura ingresada es cero.
+  - Se muestra un mensaje de error indicando que la altura debe ser un valor positivo.
+
+- **Altura Fuera de Límites:**
+  - El sistema detecta que la altura ingresada supera los límites operables.
+  - Se muestra un mensaje de error indicando que la altura está fuera de los límites válidos.
+
+- **Género No Válido:**
+  - El sistema detecta que el género ingresado no es 'M' ni 'F'.
+  - Se muestra un mensaje de error indicando que el género debe ser 'M' o 'F'.
+
+- **Peso Ideal Negativo:**
+  - El sistema calcula un peso ideal negativo.
+  - Se muestra un mensaje de error indicando que el peso ideal calculado no es válido.
+
+![alt text](P2.PNG)
