@@ -105,7 +105,7 @@ Este conjunto de pruebas tiene como objetivo validar los métodos de la `HealthC
 
 # Práctica 2 - Diagrama Casos de Uso
 
-![P2](https://github.com/JuanSoM/isa2024-healthcalc/assets/160397659/bcaa6e01-812e-4633-8195-6014d38308e1)
+![23](https://github.com/JuanSoM/isa2024-healthcalc/assets/160397659/d81ff239-a19b-4b8d-a0da-f49dac3f6875)
 
 ## Especificación del Caso de Uso - idealWeight:
 
