@@ -1,0 +1,51 @@
+Historia de Usuario 1:
+As a usuario
+Want calcular mi peso ideal
+So that puedo mantener un estilo de vida saludable
+
+Criterios de Aceptación:
+Scenario 1:
+Given que se proporciona la altura del usuario
+When el usuario selecciona su género e ingresa su altura
+Then la calculadora debe devolver el peso ideal según la fórmula de Lorentz
+
+Scenario 2:
+Given que la altura del usuario es menor o igual a 0
+When el usuario ingresa su altura
+Then la calculadora debe mostrar un mensaje de error indicando que la altura debe ser un valor positivo
+
+Scenario 3:
+Given que el género del usuario no está especificado correctamente (no es 'M' o 'F')
+When el usuario selecciona su género
+Then la calculadora debe mostrar un mensaje de error indicando que el género debe ser 'M' o 'F'
+
+Historia de Usuario 2:
+As a usuario
+Want calcular mi tasa metabólica basal (BMR)
+So that puedo gestionar mi ingesta diaria de calorías
+
+Criterios de Aceptación:
+Scenario 1:
+Given que se proporciona el peso, la altura, el género y la edad del usuario
+When el usuario ingresa su peso, altura, género y edad
+Then la calculadora debe devolver la tasa metabólica basal según la fórmula especificada
+
+Scenario 2:
+Given que el peso del usuario es menor o igual a 0
+When el usuario ingresa su peso
+Then la calculadora debe mostrar un mensaje de error indicando que el peso debe ser un valor positivo
+
+Scenario 3:
+Given que la altura del usuario es menor o igual a 0
+When el usuario ingresa su altura
+Then la calculadora debe mostrar un mensaje de error indicando que la altura debe ser un valor positivo
+
+Scenario 4:
+Given que la edad del usuario es menor o igual a 0
+When el usuario ingresa su edad
+Then la calculadora debe mostrar un mensaje de error indicando que la edad debe ser un valor positivo
+
+Scenario 5:
+Given que el género del usuario no está especificado correctamente (no es 'M' o 'F')
+When el usuario selecciona su género
+Then la calculadora debe mostrar un mensaje de error indicando que el género debe ser 'M' o 'F'
