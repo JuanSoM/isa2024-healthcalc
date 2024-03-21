@@ -46,8 +46,8 @@ public class StepDefinitions {
     }
 
 
-
-    @When("hacemos el calculo con un altura overflow {int}")
+    //ALTURA OVERFLOW
+    @When("Hacemos el calculo con un altura overflow {int}")
 	public void calculo_el_peso_ideal_con_una_altura_overflow(int height,char gender) {
 		try {
 			result = healthCalc.idealWeight(height, gender);
@@ -61,8 +61,8 @@ public class StepDefinitions {
 	}
 
 
-
-    @When("hacemos el calculo con un altura negativa {int}")
+    //ALTURA NEGATIVA
+    @When("Hacemos el calculo con un altura negativa {int}")
 	public void calculo_el_peso_ideal_con_una_altura_negativa(int height,char gender) {
 		try {
 			result = healthCalc.idealWeight(height, gender);
@@ -75,8 +75,8 @@ public class StepDefinitions {
 	    Assertions.assertTrue(raiseException);
 	}
 
-
-    @When("hacemos el calculo con un genero incorrecto {char}")
+    //GENERO INCORRECTO
+    @When("Hacemos el calculo con un genero incorrecto {char}")
 	public void calculo_el_peso_ideal_con_un_genero_incorrecto(int height,char gender) {
 		try {
 			result = healthCalc.idealWeight(height, gender);
@@ -123,8 +123,7 @@ public class StepDefinitions {
     }
     
     //ALTURA OVERFLOW
-
-    @When("hacemos el calculo con un altura overflow {int}")
+    @When("Hacemos el calculo con un altura overflow {int}")
 	public void calculo_la_tasa_metabólica_basal_con_una_altura_overflow(float weight, int height, char gender, int age) {
 		try {
 			result = healthCalc.basalMetabolicRate(weight, height, gender, age);
@@ -138,8 +137,7 @@ public class StepDefinitions {
 	}
 
     //ALTURA NEGATIVA
-
-    @When("hacemos el calculo con un altura negativa {int}")
+    @When("Hacemos el calculo con un altura negativa {int}")
 	public void calculo_la_tasa_metabólica_basal_con_una_altura_negativa(float weight, int height, char gender, int age) {
 		try {
 			result = healthCalc.basalMetabolicRate(weight, height, gender, age);
@@ -153,7 +151,7 @@ public class StepDefinitions {
 	}
 
     //PESO OVERFLOW
-    @When("hacemos el calculo con un peso overflow {int}")
+    @When("Hacemos el calculo con un peso overflow {int}")
 	public void calculo_la_tasa_metabólica_basal_con_un_peso_overflow(float weight, int height, char gender, int age) {
 		try {
 			result = healthCalc.basalMetabolicRate(weight, height, gender, age);
@@ -167,8 +165,7 @@ public class StepDefinitions {
 	}
 
     //PESO NEGATIVO
-
-    @When("hacemos el calculo con un peso negativo {int}")
+    @When("Hacemos el calculo con un peso negativo {int}")
 	public void calculo_la_tasa_metabólica_basal_con_un_peso_negativo(float weight, int height, char gender, int age) {
 		try {
 			result = healthCalc.basalMetabolicRate(weight, height, gender, age);
@@ -182,7 +179,7 @@ public class StepDefinitions {
 	}
 
     //EDAD OVERFLOW
-    @When("hacemos el calculo con una edad overflow {int}")
+    @When("Hacemos el calculo con una edad overflow {int}")
 	public void calculo_la_tasa_metabólica_basal_con_una_edad_overflow(float weight, int height, char gender, int age) {
 		try {
 			result = healthCalc.basalMetabolicRate(weight, height, gender, age);
@@ -190,14 +187,13 @@ public class StepDefinitions {
 			raiseException = true;
 		}
 	}
-    @Then("Devuelve una excepcion de peso overflow")
+    @Then("Devuelve una excepcion de edad overflow")
 	public void ParameterValueCausesOverflow_BMR_edad() {
 	    Assertions.assertTrue(raiseException);
 	}
 
     //EDAD NEGATIVA
-
-    @When("hacemos el calculo con una edad negativa {int}")
+    @When("Hacemos el calculo con una edad negativa {int}")
 	public void calculo_la_tasa_metabólica_basal_con_una_edad_negativa(float weight, int height, char gender, int age) {
 		try {
 			result = healthCalc.basalMetabolicRate(weight, height, gender, age);
@@ -212,7 +208,7 @@ public class StepDefinitions {
 
 
     //GENERO INCORRECTO
-    @When("hacemos el calculo con un genero incorrecto {char}")
+    @When("Hacemos el calculo con un genero incorrecto {char}")
 	public void calculo_la_tasa_metabólica_basal_con_un_genero_incorrecto(float weight, int height, char gender, int age) {
 		try {
 			result = healthCalc.basalMetabolicRate(weight, height, gender, age);
@@ -220,11 +216,8 @@ public class StepDefinitions {
 			raiseException = true;
 		}
 	}
-    @Then("The system raises an exception")
+    @Then("Devuelve una excepcion de genero incorrecto")
 	public void devuelve_excepcion_genero_BMR() {
 	    Assertions.assertTrue(raiseException);
 	}
-
-
-
 }
