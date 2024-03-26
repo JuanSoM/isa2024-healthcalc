@@ -4,20 +4,33 @@ Want calcular mi peso ideal
 So that puedo mantener un estilo de vida saludable
 
 Criterios de Aceptación:
-Scenario 1:
-Given que se proporciona la altura del usuario
+Scenario 1: Calcular peso ideal 
+Given que tiene una calculadora de idealWeigth
 When el usuario selecciona su género e ingresa su altura
 Then la calculadora debe devolver el peso ideal según la fórmula de Lorentz
 
-Scenario 2:
-Given que la altura del usuario es menor o igual a 0
-When el usuario ingresa su altura
+Scenario 2: Error al ingresar una altura negativa o igual a 0
+Given que tiene una calculadora de idealWeigth
+When el usuario ingresa su altura menor o igual a 0
 Then la calculadora debe mostrar un mensaje de error indicando que la altura debe ser un valor positivo
 
-Scenario 3:
-Given que el género del usuario no está especificado correctamente (no es 'M' o 'F')
-When el usuario selecciona su género
+Scenario 3: Error al ingresar un genero incorrecto
+Given que tiene una calculadora de idealWeigth
+When el usuario selecciona su género y no está especificado correctamente (no es 'M' o 'F')
 Then la calculadora debe mostrar un mensaje de error indicando que el género debe ser 'M' o 'F'
+
+Scenario 4: Error al ingresar una altura overflow
+Given que tiene una calculadora de idealWeigth
+When el usuario ingresa su altura que supera los limites operables
+Then la calculadora debe mostrar un mensaje de error indicando que la altura ha superado los limites operables
+
+Scenario 5: Error de idealWeigth negativo
+Given que tiene una calculadora de idealWeigth
+When el usuario ingresa una altura muy cercana o igual a 1
+Then la calculadora debe mostrar un mensaje de error indicando que el idealWeigth calculado es invalido
+
+
+
 
 Historia de Usuario 2:
 As a usuario
@@ -25,27 +38,49 @@ Want calcular mi tasa metabólica basal (BMR)
 So that puedo gestionar mi ingesta diaria de calorías
 
 Criterios de Aceptación:
-Scenario 1:
-Given que se proporciona el peso, la altura, el género y la edad del usuario
+Scenario 1: Calcular BMR con datos válidos
+Given que tiene una calculadora para BMR
 When el usuario ingresa su peso, altura, género y edad
 Then la calculadora debe devolver la tasa metabólica basal según la fórmula especificada
 
-Scenario 2:
-Given que el peso del usuario es menor o igual a 0
-When el usuario ingresa su peso
-Then la calculadora debe mostrar un mensaje de error indicando que el peso debe ser un valor positivo
+Scenario 2: Error al ingresar una altura overflow 
+Given que tiene una calculadora para BMR
+When el usuario ingresa su altura overflow
+Then la calculadora debe mostrar un mensaje de error indicando que la altura supera los limites operables
 
-Scenario 3:
-Given que la altura del usuario es menor o igual a 0
-When el usuario ingresa su altura
+Scenario 3: Error al ingresar una altura negativa
+Given que tiene una calculadora para BMR
+When el usuario ingresa su altura es menor o igual a 0
 Then la calculadora debe mostrar un mensaje de error indicando que la altura debe ser un valor positivo
 
-Scenario 4:
-Given que la edad del usuario es menor o igual a 0
-When el usuario ingresa su edad
+Scenario 4: Error al ingresar un peso overflow
+Given que tiene una calculadora para BMR
+When el usuario ingresa su peso overflow
+Then la calculadora debe mostrar un mensaje de error indicando que el peso supera los limites operables
+
+Scenario 5:  Error al ingresar un peso negativo
+Given que tiene una calculadora para BMR
+When el usuario ingresa su peso es menor o igual a 0
+Then la calculadora debe mostrar un mensaje de error indicando que el peso debe ser un valor positivo
+
+
+Scenario 6: Error al ingresar una edad overflow
+Given que tiene una calculadora para BMR
+When el usuario ingresa su edad overflow
+Then la calculadora debe mostrar un mensaje de error indicando que la edad supera los limites operables
+
+Scenario 7: Error al ingresar una edad negativa
+Given que tiene una calculadora para BMR
+When el usuario ingresa su edad es menor o igual a 0
 Then la calculadora debe mostrar un mensaje de error indicando que la edad debe ser un valor positivo
 
-Scenario 5:
-Given que el género del usuario no está especificado correctamente (no es 'M' o 'F')
-When el usuario selecciona su género
+
+Scenario 8: Error al ingresar un genero incorrecto
+Given que tiene una calculadora para BMR
+When el usuario selecciona su género y no está especificado correctamente (no es 'M' o 'F')
 Then la calculadora debe mostrar un mensaje de error indicando que el género debe ser 'M' o 'F'
+
+Scenario 9: Error de BMR negativo o igual a 0
+Given que tiene una calculadora para BMR
+When el usuario ingresa una altura y peso muy cercanos o igual a 1
+Then la calculadora debe mostrar un mensaje de error indicando que el BMR calculado es invalido
