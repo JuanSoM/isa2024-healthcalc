@@ -5,18 +5,25 @@ Feature: Calcular Peso Ideal
   I want to calculate my ideal weight
   So that I can maintain a healthy lifestyle
 
-  Scenario: Calcular peso ideal con altura válida y género masculino
-    Given que se proporciona la altura del usuario
-    And el usuario selecciona su género como 'M'
-    When el usuario ingresa su altura
-    Then la calculadora devuelve el peso ideal según la fórmula de Lorentz
+  @tag1
+  Scenario: Calcular peso ideal 
+    Given que tengo una calculadora para el peso ideal
+    When calculo el peso ideal con altura 180 y genero "M"
+    Then el sistema deberia devolver el peso ideal 72.5, de acuerdo con la formula de Lorentz
 
-  Scenario: Error al ingresar una altura no válida
-    Given que la altura del usuario es menor o igual a 0
-    When el usuario ingresa su altura
-    Then la calculadora muestra un mensaje de error indicando que la altura debe ser un valor positivo
+  @tag2
+  Scenario: Error al ingresar una altura negativa o igual a 0
+    Given que tengo una calculadora para el peso ideal
+    When calculo el peso ideal con altura -1 y genero 'M'
+    Then la calculadora debe lanzar un error
+  @tag4
+  Scenario: Error al ingresar una altura overflow
+    Given que tengo una calculadora para el peso ideal
+    When Hacemos el calculo con un altura overflow y genero masculino
+    Then Devuelve una excepcion de altura overflow
 
-  Scenario: Error al especificar un género inválido
-    Given que el género del usuario no está especificado correctamente
-    When el usuario selecciona su género
-    Then la calculadora muestra un mensaje de error indicando que el género debe ser 'M' o 'F'
+  @tag5
+  Scenario: Error al especificar un genero invalido
+    Given que tengo una calculadora para el peso ideal
+    When calculo el peso ideal con altura 1 y genero 'M'
+    Then Devuelve una excepcion de idealWeigth negativa
