@@ -53,15 +53,15 @@ public class IdealWeigth_StepsDef {
         
     }
 
-    
+    //CASO NORMAL EN EL QUE INTRODUZCAMOS LOS PARAMETROS CORRECTAMENTE
     @Then("el sistema deberia devolver el peso ideal {float}, de acuerdo con la formula de Lorentz")
     public void el_sistema_deberia_devolver_el_peso_ideal_de_acuerdo_con_la_formula_de_Lorentz(float expected) {
         float delta = 0.001f;
         Assert.assertEquals(expected, result,delta);
     }
-
+    //DEBE DEVOLVER UN ERROR CUANDO OCURRE QUE LA ALTURA ES NEGATIVA O EL GENERO ES INCORRECTO
     @Then("la calculadora debe lanzar un error")
-    public void the_calculator_should_raise_an_error() {
+    public void la_calculadora_debe_lanzar_un_error() {
         
         if ((this.raiseException.contains("valor positivo") || 
              this.raiseException.contains("género debe ser"))) {
@@ -70,7 +70,8 @@ public class IdealWeigth_StepsDef {
         Assertions.assertTrue(error);
         
     }
-    @Then("Devuelve una excepcion de idealWeigth negativa")
+    //idealWeigth NEGATIVO
+    @Then("Devuelve una excepcion de idealWeigth negativa o 0")
 	public void devuelve_excepcion_peso() {
         if (this.raiseException.contains("El peso ideal calculado es no válido.")) {
             this.error = true;

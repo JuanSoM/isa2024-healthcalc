@@ -16,6 +16,11 @@ Feature: Calcular Peso Ideal
     Given que tengo una calculadora para el peso ideal
     When calculo el peso ideal con altura -1 y genero 'M'
     Then la calculadora debe lanzar un error
+  @tag3
+  Scenario: Error al ingresar un genero incorrecto
+    Given que tengo una calculadora para el peso ideal
+    When calculo el peso ideal con altura 180 y genero 'S'
+    Then la calculadora debe lanzar un error
   @tag4
   Scenario: Error al ingresar una altura overflow
     Given que tengo una calculadora para el peso ideal
@@ -23,7 +28,7 @@ Feature: Calcular Peso Ideal
     Then Devuelve una excepcion de altura overflow
 
   @tag5
-  Scenario: Error al especificar un genero invalido
+  Scenario: Error de idealWeigth negativo
     Given que tengo una calculadora para el peso ideal
     When calculo el peso ideal con altura 1 y genero 'M'
-    Then Devuelve una excepcion de idealWeigth negativa
+    Then Devuelve una excepcion de idealWeigth negativa o 0
