@@ -102,3 +102,25 @@ Este conjunto de pruebas tiene como objetivo validar los métodos de la `HealthC
 ![p1SoftAvan](https://github.com/JuanSoM/isa2024-healthcalc/assets/160397659/0b689b01-163f-416a-9c2b-74512e27675a)
 ![p1SoftAvan2](https://github.com/JuanSoM/isa2024-healthcalc/assets/160397659/54d7d58e-c966-4bbe-8416-b14c7a57e072)
 
+# Práctica 4 - Interfaz Gráfica de la Calculadora de Salud
+
+## Título
+- La parte superior de la interfaz gráfica incluye un título que indica el propósito de la aplicación, en este caso, "Calculadora de Salud".
+
+## Campos de Entrada
+- Hay cuatro campos de entrada donde el usuario puede ingresar datos:
+  - **Peso (kg):** Un campo de texto donde el usuario puede ingresar su peso en kilogramos.
+  - **Altura (cm):** Un campo de texto donde el usuario puede ingresar su altura en centímetros.
+  - **Edad:** Un campo de texto donde el usuario puede ingresar su edad.
+  - **Género:** Un menú desplegable donde el usuario puede seleccionar su género, con opciones para masculino (M) o femenino (F).
+
+## Botones de Acción
+- Hay dos botones que el usuario puede utilizar para realizar diferentes cálculos:
+  - **Calcular Peso Ideal:** Un botón que, al hacer clic, calcula y muestra el peso ideal del usuario.
+  - **Calcular BMR:** Un botón que, al hacer clic, calcula y muestra la tasa metabólica basal (BMR) del usuario.
+
+## Mensajes de Salida
+- En la parte inferior de la interfaz gráfica, hay un área donde se mostrarán los resultados de los cálculos realizados, como el peso ideal o la BMR. También se mostrarán mensajes de error si el usuario ingresa datos incorrectos o si ocurren errores durante los cálculos.
+
+## Diseño y Organización
+- La interfaz gráfica está organizada de manera clara y ordenada, con los campos de entrada y botones de acción dispuestos en columnas y filas. Esto facilita al usuario la comprensión de qué datos debe ingresar y qué acciones puede realizar.
