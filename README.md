@@ -124,3 +124,8 @@ Este conjunto de pruebas tiene como objetivo validar los métodos de la `HealthC
 
 ## Diseño y Organización
 - La interfaz gráfica está organizada de manera clara y ordenada, con los campos de entrada y botones de acción dispuestos en columnas y filas. Esto facilita al usuario la comprensión de qué datos debe ingresar y qué acciones puede realizar.
+## Sketch
+![sketch](https://github.com/JuanSoM/isa2024-healthcalc/assets/160397659/ec9989eb-4e23-4fcb-bad8-8ec6f2767c13)
+
+## App
+![app](https://github.com/JuanSoM/isa2024-healthcalc/assets/160397659/ba9c9aa4-b0b3-42d4-aed0-9362d176b1ea)
