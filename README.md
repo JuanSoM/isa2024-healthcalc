@@ -101,4 +101,90 @@ Este conjunto de pruebas tiene como objetivo validar los métodos de la `HealthC
 
 ![p1SoftAvan](https://github.com/JuanSoM/isa2024-healthcalc/assets/160397659/0b689b01-163f-416a-9c2b-74512e27675a)
 ![p1SoftAvan2](https://github.com/JuanSoM/isa2024-healthcalc/assets/160397659/54d7d58e-c966-4bbe-8416-b14c7a57e072)
+# Practica 3
 
+## Historia de Usuario 1: Calcular Peso Ideal
+
+As a Usuario
+Quiero calcular mi peso ideal
+Para poder mantener un estilo de vida saludable
+
+## Criterios de Aceptación
+
+### Scenario 1: Calcular peso ideal
+Given que tiene una calculadora de idealWeigth
+When el usuario selecciona su género e ingresa su altura
+Then la calculadora debe devolver el peso ideal según la fórmula de Lorentz
+
+### Scenario 2: Error al ingresar una altura negativa o igual a 0
+Given que tiene una calculadora de idealWeigth
+When el usuario ingresa su altura menor o igual a 0
+Then la calculadora debe mostrar un mensaje de error indicando que la altura debe ser un valor positivo
+
+### Scenario 3: Error al ingresar un género incorrecto
+Given que tiene una calculadora de idealWeigth
+When el usuario selecciona su género y no está especificado correctamente (no es 'M' o 'F')
+Then la calculadora debe mostrar un mensaje de error indicando que el género debe ser 'M' o 'F'
+
+### Scenario 4: Error al ingresar una altura overflow
+Given que tiene una calculadora de idealWeigth
+When el usuario ingresa su altura que supera los límites operables
+Then la calculadora debe mostrar un mensaje de error indicando que la altura ha superado los límites operables
+
+### Scenario 5: Error de idealWeigth negativo
+Given que tiene una calculadora de idealWeigth
+When el usuario ingresa una altura muy cercana o igual a 1
+Then la calculadora debe mostrar un mensaje de error indicando que el idealWeigth calculado es inválido
+
+## Historia de Usuario 2: Calcular Tasa Metabólica Basal (BMR)
+
+As a Usuario
+Quiero calcular mi tasa metabólica basal (BMR)
+Para poder gestionar mi ingesta diaria de calorías
+
+## Criterios de Aceptación
+
+### Scenario 1: Calcular BMR con datos válidos
+Given que tiene una calculadora para BMR
+When el usuario ingresa su peso, altura, género y edad
+Then la calculadora debe devolver la tasa metabólica basal según la fórmula especificada
+
+### Scenario 2: Error al ingresar una altura overflow 
+Given que tiene una calculadora para BMR
+When el usuario ingresa su altura overflow
+Then la calculadora debe mostrar un mensaje de error indicando que la altura supera los límites operables
+
+### Scenario 3: Error al ingresar una altura negativa
+Given que tiene una calculadora para BMR
+When el usuario ingresa su altura menor o igual a 0
+Then la calculadora debe mostrar un mensaje de error indicando que la altura debe ser un valor positivo
+
+### Scenario 4: Error al ingresar un peso overflow
+Given que tiene una calculadora para BMR
+When el usuario ingresa su peso overflow
+Then la calculadora debe mostrar un mensaje de error indicando que el peso supera los límites operables
+
+### Scenario 5:  Error al ingresar un peso negativo
+Given que tiene una calculadora para BMR
+When el usuario ingresa su peso menor o igual a 0
+Then la calculadora debe mostrar un mensaje de error indicando que el peso debe ser un valor positivo
+
+### Scenario 6: Error al ingresar una edad overflow
+Given que tiene una calculadora para BMR
+When el usuario ingresa su edad overflow
+Then la calculadora debe mostrar un mensaje de error indicando que la edad supera los límites operables
+
+### Scenario 7: Error al ingresar una edad negativa
+Given que tiene una calculadora para BMR
+When el usuario ingresa su edad menor o igual a 0
+Then la calculadora debe mostrar un mensaje de error indicando que la edad debe ser un valor positivo
+
+### Scenario 8: Error al ingresar un género incorrecto
+Given que tiene una calculadora para BMR
+When el usuario selecciona su género y no está especificado correctamente (no es 'M' o 'F')
+Then la calculadora debe mostrar un mensaje de error indicando que el género debe ser 'M' o 'F'
+
+### Scenario 9: Error de BMR negativo o igual a 0
+Given que tiene una calculadora para BMR
+When el usuario ingresa una altura y peso muy cercanos o igual a 1
+Then la calculadora debe mostrar un mensaje de error indicando que el BMR calculado es inválido
