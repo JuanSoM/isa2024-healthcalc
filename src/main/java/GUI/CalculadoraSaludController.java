@@ -8,7 +8,7 @@ import healthcalc.HealthCalcImpl;
 public class CalculadoraSaludController {
 
     private CalculadoraSaludView vista;
-    private HealthCalcImpl model;
+    private HealthCalcImpl model= HealthCalcImpl.getInstance();
 
     public CalculadoraSaludController(CalculadoraSaludView vista, HealthCalcImpl model) {
         this.vista = vista;
