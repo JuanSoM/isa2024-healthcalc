@@ -71,14 +71,12 @@ public class HealthStatsProxy implements HealthStats {
 	@Override
 	public int numSexoH() {
 		// TODO Auto-generated method stub
-		numMales=numMales/2;
 		return numMales;//sumamos dos veces porque ejecutamos tanto bmr como iw
 	}
 
 	@Override
 	public int numSexoM() {
 		// TODO Auto-generated method stub
-		numFemales=numFemales/2;
 		return numFemales;
 	}
 

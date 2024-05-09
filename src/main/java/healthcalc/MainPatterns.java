@@ -13,32 +13,26 @@ public class MainPatterns {
         int age = 30;
         int height = 180;
         float weight = 70.5f;
-
-        double bmr = adapter.bmr(gender, age, height, weight);
-        float idealWeight = adapter.pesoIdeal(gender, height);
-
-        // Paso 4: Imprimir los resultados o realizar cualquier otra acción
-        System.out.println("BMR: " + bmr);
-        System.out.println("Peso Ideal: " + idealWeight);
         
+        char gender3 = 'F';
+        int age3 = 30;
+        int height3 = 5;
+        float weight3 = 160.0f;
+        
+       
         // Paso 2: Crear una instancia del Proxy
         HealthStatsProxy proxy = new HealthStatsProxy(adapter);
+    
+        
+        HealthHospitalDecorator europeanDecorator = new EuropeanCalculatorDecorator(proxy);
+        HealthHospitalDecorator americanDecorator = new AmericanCalculatorDecorator(proxy);
+        
+        
+        europeanDecorator.bmr(gender, age, height, weight);
 
-        // Llamamos a los métodos proxy.pesoIdeal() y proxy.bmr() para agregar valores a las listas
-        proxy.pesoIdeal(gender, height);
-        proxy.bmr(gender, age, height, weight);
-
-        // Probamos con otros valores
-        char gender2 = 'F';
-        int age2 = 25;
-        int height2 = 160;
-        float weight2 = 60.0f;
-
-        // Llamamos a los métodos proxy.pesoIdeal() y proxy.bmr() nuevamente con diferentes valores
-        proxy.pesoIdeal(gender2, height2);
-        proxy.bmr(gender2, age2, height2, weight2);
-
-        // Ahora podemos obtener las medias y otros datos
+        americanDecorator.bmr(gender3, age3, height3, weight3);
+        
+     // Ahora podemos obtener las medias y otros datos
         float averageWeight = proxy.averageWeight();
         float averageHeight = proxy.averageHeight();
         float averageAge = proxy.averageAge();
@@ -55,5 +49,6 @@ public class MainPatterns {
         System.out.println("Número de pacientes masculinos: " + numMale);
         System.out.println("Número de pacientes femeninos: " + numFemale);
         System.out.println("Número total de pacientes: " + numTotalPatients);
+
     }
 }
