@@ -129,3 +129,41 @@ Este conjunto de pruebas tiene como objetivo validar los métodos de la `HealthC
 
 ## App
 ![app](https://github.com/JuanSoM/isa2024-healthcalc/assets/160397659/ba9c9aa4-b0b3-42d4-aed0-9362d176b1ea)
+
+
+# Práctica 6 - Patrones de diseño
+
+## Patrón de Diseño Singleton:
+![Patron Singleton](https://github.com/JuanSoM/isa2024-healthcalc/assets/160397659/8c7fd4ec-f351-4d54-9e06-b0f84aeae01b)
+
+## Patrones de Diseño Utilizados en el Apartado 2:
+
+### Adapter:
+El patrón Adapter se utiliza para permitir que dos interfaces incompatibles trabajen juntas. En el caso del apartado a), se necesita adaptar la interfaz `HealthCalcImpl` (que ya implementa métodos para calcular el BMR y el peso ideal) a la interfaz `HealthHospital` requerida por el Hospital Costa del Sol.
+
+### Proxy:
+El patrón Proxy se utiliza para controlar el acceso a un objeto o realizar una funcionalidad adicional cuando se accede a él. En el apartado b), se utiliza el Proxy para llevar un registro de las veces que se utiliza la calculadora en el sistema informático y para calcular la media de los valores introducidos y calculados por la calculadora.
+
+### Decorator:
+El patrón Decorator se utiliza para añadir funcionalidades adicionales a un objeto de manera dinámica. En el apartado c), se utilizan los Decorators para crear dos versiones de la calculadora: una versión europea y otra americana. Además, se utiliza para mostrar un mensaje preciso con la información de la operación "BMR" cada vez que se invoca la calculadora.
+
+## Explicación de su Utilización en Cada Apartado:
+
+### a) Utilización del Adapter:
+![Patron Adapter](https://github.com/JuanSoM/isa2024-healthcalc/assets/160397659/208eccb2-7573-49b1-951a-5672d3483736)
+
+En este caso, se utiliza el patrón Adapter para adaptar la interfaz `HealthCalcImpl` a la interfaz `HealthHospital` requerida por el Hospital Costa del Sol. Esto permite reutilizar la implementación existente de la calculadora de salud sin tener que volver a implementar los métodos.
+
+
+
+### b) Utilización del Proxy:
+![Patron Proxy](https://github.com/JuanSoM/isa2024-healthcalc/assets/160397659/92ad556d-2339-48ab-95c6-a34c7a15ae48)
+
+El patrón Proxy se utiliza para añadir funcionalidades adicionales al acceso a la calculadora de salud, como llevar un registro de las veces que se utiliza en el sistema informático y calcular la media de los valores introducidos y calculados. Esto se logra creando una clase Proxy que envuelve a la calculadora de salud y realiza estas funcionalidades adicionales.
+
+
+### c) Utilización del Decorator:
+![Patron Decorator](https://github.com/JuanSoM/isa2024-healthcalc/assets/160397659/0e443baf-aeab-4826-9451-ffd92614757f)
+
+En este caso, se utiliza el patrón Decorator para añadir funcionalidades adicionales a la calculadora de salud sin modificar su estructura básica. Se crean dos Decorators: uno para la versión europea de la calculadora y otro para la versión americana. Estos Decorators permiten adaptar la calculadora para aceptar diferentes unidades de medida y mostrar mensajes precisos en dos idiomas diferentes.
+
