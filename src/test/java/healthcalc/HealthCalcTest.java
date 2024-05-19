@@ -2,7 +2,6 @@ package healthcalc;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -10,169 +9,166 @@ import org.junit.jupiter.api.Test;
 @DisplayName("Tests para la calculadora de salud.")
 public class HealthCalcTest {
 
-	private HealthCalcImpl healthCalc = HealthCalcImpl.getInstance();
+    private HealthCalcImpl healthCalc = HealthCalcImpl.getInstance();
 
-	//Tests para idealweight
+    // Tests para getIdealBodyWeight
 
-	@Test
-	@DisplayName("Test altura negativa en idealWeight")
-	public void testAlturaNegativaIdealWeight() {
-		assertThrows(IllegalArgumentException.class, () -> healthCalc.idealWeight(-1, 'M'));
-	}
-
-	@Test
-	@DisplayName("Test altura cero en idealWeight")
-	public void testAlturaCeroIdealWeight() {
-		assertThrows(IllegalArgumentException.class, () -> healthCalc.idealWeight(0, 'M'));
-	}
-
-	@Test
-	@DisplayName("Test altura cuando el valor sobrepasa el limite operable en idealWeight ")
-	public void testAlturaOverflowIdealWeight() {
-		assertThrows(IllegalArgumentException.class, () -> healthCalc.idealWeight(Integer.MAX_VALUE, 'M'));
-	}
-
-	@Test
-	@DisplayName("Test género no válido para idealWeight")
-	public void testGeneroNoValidoIdealWeight() {
-		assertThrows(IllegalArgumentException.class, () -> healthCalc.idealWeight(85, 'U'), "El género es 'M' (hombre) o 'F' (mujer).");
-	}
-
-	@Test
-	@DisplayName("Test idealweight negativo con hombre")
-	public void testPesoIdealNegativoHombre() {
-		assertThrows(IllegalArgumentException.class, () -> healthCalc.idealWeight(40, 'M'));
-	}
-
-	@Test
-	@DisplayName("Test idealweight negativo con mujer")
-	public void testPesoIdealNegativoMujer() {
-		assertThrows(IllegalArgumentException.class, () -> healthCalc.idealWeight(40, 'F'));
-	}
-
-	@Test
-    @DisplayName("Test peso ideal hombre")
-    public void testPesoIdealHombre() throws Exception {
-        int height1 = 180;
-        char gender1 = 'M';
-        float pesoIdealEsperado = height1 - 100 - (height1 - 150) / 4f;
-		assertEquals(pesoIdealEsperado, healthCalc.idealWeight(height1, gender1));
+    @Test
+    @DisplayName("Test altura negativa en getIdealBodyWeight")
+    public void testAlturaNegativaIdealWeight() {
+        assertThrows(IllegalArgumentException.class, () -> new PersonImpl(-1, Gender.MALE));
     }
 
     @Test
-    @DisplayName("Test peso ideal mujer ")
+    @DisplayName("Test altura cero en getIdealBodyWeight")
+    public void testAlturaCeroIdealWeight() {
+        assertThrows(IllegalArgumentException.class, () -> new PersonImpl(0, Gender.MALE));
+    }
+
+    @Test
+    @DisplayName("Test altura cuando el valor sobrepasa el limite operable en getIdealBodyWeight")
+    public void testAlturaOverflowIdealWeight() {
+        assertThrows(IllegalArgumentException.class, () -> new PersonImpl(Integer.MAX_VALUE, Gender.MALE));
+    }
+
+    @Test
+    @DisplayName("Test género no válido para getIdealBodyWeight")
+    public void testGeneroNoValidoIdealWeight() {
+        assertThrows(IllegalArgumentException.class, () -> new PersonImpl(85, null));
+    }
+
+    @Test
+    @DisplayName("Test peso ideal negativo con hombre")
+    public void testPesoIdealNegativoHombre() {
+        PersonImpl persona = new PersonImpl(40, Gender.MALE);
+        assertThrows(IllegalArgumentException.class, () -> healthCalc.getIdealBodyWeight(persona));
+    }
+
+    @Test
+    @DisplayName("Test peso ideal negativo con mujer")
+    public void testPesoIdealNegativoMujer() {
+    	PersonImpl persona =new PersonImpl(40, Gender.FEMALE);
+        assertThrows(IllegalArgumentException.class, () -> healthCalc.getIdealBodyWeight(persona));
+    }
+
+    @Test
+    @DisplayName("Test peso ideal hombre")
+    public void testPesoIdealHombre() throws Exception {
+        int height1 = 180;
+        Gender gender1 = Gender.MALE;
+        float pesoIdealEsperado = height1 - 100 - (height1 - 150) / 4f;
+        PersonImpl persona = new PersonImpl(height1, gender1);
+        assertEquals(pesoIdealEsperado, healthCalc.getIdealBodyWeight(persona));
+    }
+
+    @Test
+    @DisplayName("Test peso ideal mujer")
     public void testPesoIdealMujer() throws Exception {
         int height1 = 170;
-        char gender1 = 'F';
+        Gender gender1 = Gender.FEMALE;
         float pesoIdealEsperado = height1 - 100 - (height1 - 150) / 2.5f;
-        assertEquals(pesoIdealEsperado, healthCalc.idealWeight(height1, gender1));
+        PersonImpl persona = new PersonImpl(height1, gender1);
+        assertEquals(pesoIdealEsperado, healthCalc.getIdealBodyWeight(persona));
     }
 
+    // Tests para basalMetabolicRate
 
+    @Test
+    @DisplayName("Test peso negativo basalMetabolicRate")
+    public void testPesoNegativoBasalMetabolicRate() {
+        assertThrows(IllegalArgumentException.class, () -> new PersonImpl(-1, 170, Gender.MALE, 20));
+    }
 
+    @Test
+    @DisplayName("Test peso cero basalMetabolicRate")
+    public void testPesoCeroBasalMetabolicRate() {
+        assertThrows(IllegalArgumentException.class, () -> new PersonImpl(0, 170, Gender.MALE, 20));
+    }
 
+    @Test
+    @DisplayName("Test altura negativa basalMetabolicRate")
+    public void testAlturaNegativaBasalMetabolicRate() {
+        assertThrows(IllegalArgumentException.class, () -> new PersonImpl(60, -1, Gender.MALE, 20));
+    }
 
+    @Test
+    @DisplayName("Test altura cero basalMetabolicRate")
+    public void testAlturaCeroBasalMetabolicRate() {
+        assertThrows(IllegalArgumentException.class, () -> new PersonImpl(60, 0, Gender.MALE, 20));
+    }
 
+    @Test
+    @DisplayName("Test edad negativa basalMetabolicRate")
+    public void testEdadNegativaBasalMetabolicRate() {
+        assertThrows(IllegalArgumentException.class, () -> new PersonImpl(60, 170, Gender.MALE, -1));
+    }
 
+    @Test
+    @DisplayName("Test edad cero basalMetabolicRate")
+    public void testEdadCeroBasalMetabolicRate() {
+        assertThrows(IllegalArgumentException.class, () -> new PersonImpl(60, 170, Gender.MALE, 0));
+    }
 
+    @Test
+    @DisplayName("Test género no válido para basalMetabolicRate")
+    public void testGeneroNoValidoBasalMetabolicRate() {
+        assertThrows(IllegalArgumentException.class, () -> new PersonImpl(60, 170, null, 20), "El género no es válido.");
+    }
 
+    @Test
+    @DisplayName("Test basalMetabolicRate negativo con hombre")
+    public void testBasalMetabolicRateNegativoHombre() {
+        PersonImpl persona = new PersonImpl(5, 5, Gender.MALE, 50);
+        assertThrows(IllegalArgumentException.class, () -> healthCalc.basalMetabolicRate(persona));
+    }
 
+    @Test
+    @DisplayName("Test basalMetabolicRate negativo con mujer")
+    public void testBasalMetabolicRateNegativoMujer() {
+        PersonImpl persona = new PersonImpl(5, 5, Gender.FEMALE, 50);
+        assertThrows(IllegalArgumentException.class, () -> healthCalc.basalMetabolicRate(persona));
+    }
 
-	// Tests para basalMetabolicRate
+    @Test
+    @DisplayName("Test peso sobrepasa el valor valido en basalMetabolicRate")
+    public void testPesoOverflowBasalMetabolicRate() {
+        assertThrows(IllegalArgumentException.class, () -> new PersonImpl(Float.MAX_VALUE, 170, Gender.MALE, 20));
+    }
 
-	
-	@Test
-	@DisplayName("Test peso negativo basalMetabolicRate")
-	public void testPesoNegativoBasalMetabolicRate() {
-		assertThrows(IllegalArgumentException.class, () -> healthCalc.basalMetabolicRate(-1, 170, 'M', 20));
-	}
-	
-	@Test
-	@DisplayName("Test peso cero basalMetabolicRate")
-	public void testPesoCeroBasalMetabolicRate() {
-		assertThrows(IllegalArgumentException.class, () -> healthCalc.basalMetabolicRate(0, 170, 'M', 20));
-	}
+    @Test
+    @DisplayName("Test altura sobrepasa el valor valido en basalMetabolicRate")
+    public void testAlturaOverflowBasalMetabolicRate() {
+        assertThrows(IllegalArgumentException.class, () -> new PersonImpl(60, Integer.MAX_VALUE, Gender.MALE, 20));
+    }
 
-	@Test
-	@DisplayName("Test altura negativa basalMetabolicRate")
-	public void testAlturaNegativaBasalMetabolicRate() {
-		assertThrows(IllegalArgumentException.class, () -> healthCalc.basalMetabolicRate(60, -1, 'M', 20));
-	}
+    @Test
+    @DisplayName("Test edad sobrepasa el valor valido en basalMetabolicRate")
+    public void testEdadOverflowBasalMetabolicRate() {
+        assertThrows(IllegalArgumentException.class, () -> new PersonImpl(60, 170, Gender.MALE, Integer.MAX_VALUE));
+    }
 
-	@Test
-	@DisplayName("Test altura cero basalMetabolicRate")
-	public void testAlturaCeroBasalMetabolicRate() {
-		assertThrows(IllegalArgumentException.class, () -> healthCalc.basalMetabolicRate(60, 0, 'M', 20));
-	}
-
-	@Test
-	@DisplayName("Test edad negativa basalMetabolicRate")
-	public void testEdadNegativaBasalMetabolicRate() {
-		assertThrows(IllegalArgumentException.class, () -> healthCalc.basalMetabolicRate(60, 170, 'M', -1));
-	}
-
-	@Test
-	@DisplayName("Test edad cero basalMetabolicRate")
-	public void testEdadCeroBasalMetabolicRate() {
-		assertThrows(IllegalArgumentException.class, () -> healthCalc.basalMetabolicRate(60, 170, 'M', 0));
-	}
-
-	@Test
-	@DisplayName("Test género no válido para basalMetabolicRate")
-	public void testGeneroNoValidoBasalMetabolicRate() {
-		assertThrows(IllegalArgumentException.class, () -> healthCalc.basalMetabolicRate(60, 170, 'X', 20));
-	}
-
-	@Test
-	@DisplayName("Test basalMetabolicRate negativo con hombre")
-	public void testbasalMetabolicRateNegativoHombre() {
-		assertThrows(IllegalArgumentException.class, () -> healthCalc.basalMetabolicRate(5, 5, 'M', 50));
-	}
-
-	@Test
-	@DisplayName("Test basalMetabolicRate negativo con mujer")
-	public void testbasalMetabolicRateNegativoMujer() {
-		assertThrows(IllegalArgumentException.class, () -> healthCalc.basalMetabolicRate(5, 5, 'F', 50));
-	}
-
-	@Test
-	@DisplayName("Test peso sobrepasa el valor valido en basalMetabolicRate")
-	public void testPesoOverflowBasalMetabolicRate() {
-		assertThrows(IllegalArgumentException.class, () -> healthCalc.basalMetabolicRate(Float.MAX_VALUE, 170, 'M', 20));
-	}
-
-	@Test
-	@DisplayName("Test altura sobrepasa el valor valido en basalMetabolicRate")
-	public void testAlturaOverflowBasalMetabolicRate() {
-		assertThrows(IllegalArgumentException.class, () -> healthCalc.basalMetabolicRate(60, Integer.MAX_VALUE, 'M', 20));
-	}
-
-	@Test
-	@DisplayName("Test edad sobrepasa el valor valido en basalMetabolicRate")
-	public void testEdadOverflowBasalMetabolicRate() {
-		assertThrows(IllegalArgumentException.class, () -> healthCalc.basalMetabolicRate(60, 170, 'M', Integer.MAX_VALUE));
-	}
-
-	@Test
-    @DisplayName("Test metabolismo basal mujer ")
+    @Test
+    @DisplayName("Test metabolismo basal mujer")
     public void testMetabolismoBasalMujer() throws Exception {
-		float weight = 60;
-		int height = 170;
-		char gender = 'F';
-		int age = 20;
-        float pesoIdealEsperado = 10 * weight + 6.25f * height - 5 * age - 161;
-        assertEquals(pesoIdealEsperado, healthCalc.basalMetabolicRate(weight, height, gender, age));
+        float weight = 60;
+        int height = 170;
+        Gender gender = Gender.FEMALE;
+        int age = 20;
+        float bmrEsperado = 10 * weight + 6.25f * height - 5 * age - 161;
+        PersonImpl persona = new PersonImpl(weight, height, gender, age);
+        assertEquals(bmrEsperado, healthCalc.basalMetabolicRate(persona));
     }
 
-	@Test
-    @DisplayName("Test metabolismo basal hombre ")
+    @Test
+    @DisplayName("Test metabolismo basal hombre")
     public void testMetabolismoBasalHombre() throws Exception {
         float weight = 60;
-		int height = 180;
-		char gender = 'M';
-		int age = 20;
-        float pesoIdealEsperado =  10 * weight + 6.25f * height - 5 * age + 5;
-        assertEquals(pesoIdealEsperado, healthCalc.basalMetabolicRate(weight, height, gender, age));
+        int height = 180;
+        Gender gender = Gender.MALE;
+        int age = 20;
+        float bmrEsperado = 10 * weight + 6.25f * height - 5 * age + 5;
+        PersonImpl persona = new PersonImpl(weight, height, gender, age);
+        assertEquals(bmrEsperado, healthCalc.basalMetabolicRate(persona));
     }
 
 }
