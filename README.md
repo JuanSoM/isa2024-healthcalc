@@ -167,3 +167,31 @@ El patrón Proxy se utiliza para añadir funcionalidades adicionales al acceso a
 
 En este caso, se utiliza el patrón Decorator para añadir funcionalidades adicionales a la calculadora de salud sin modificar su estructura básica. Se crean dos Decorators: uno para la versión europea de la calculadora y otro para la versión americana. Estos Decorators permiten adaptar la calculadora para aceptar diferentes unidades de medida y mostrar mensajes precisos en dos idiomas diferentes.
 
+# Práctica 7 - Registro de Refactorización en el Código de la Aplicación
+
+## Refactorización 1: Reemplazo del Tipo 'char' para Género por un 'ENUM'
+
+- **Bad Smell:** Type Tests.
+- **Refactorings Aplicados:** Replace Type Code with Class.
+- **Tipo/Categoría:** Attribute Refactoring.
+- **Descripción:** Se reemplazó el uso de caracteres para representar el género ('M', 'F') por una Enumeración Gender con dos estados posibles: FEMALE y MALE. Esto simplifica la lógica y elimina la necesidad de verificaciones repetitivas de tipo.
+- **Cambios:** Enum Gender, HealthCalc, HealthCalcImpl, Controlador Modelo Vista-Controlador, Pruebas Unitarias.
+- **Cambios Manuales:** 15 líneas de código.
+
+## Refactorización 2: Agrupación de Atributos bajo una Clase Persona
+
+- **Bad Smell:** Data Clumbs.
+- **Refactorings Aplicados:** Encapsulate Data, Move Method.
+- **Tipo/Categoría:** Class Refactoring.
+- **Descripción:** Se creó la clase Person para agrupar los campos relacionados con una persona, como peso, altura, edad y género. Esto mejora la cohesión y reduce la repetición de código.
+- **Cambios:** Interfaz Person, Clase PersonaEspecifica, HealthCalcImpl, Test Unitarios, Modelo Vista-Controlador.
+- **Cambios Manuales:** 133 líneas de código.
+
+## Refactorización 3: Creación de Interfaces CardiovascularMetrics y MetabolicMetrics
+
+- **Bad Smell:** Large/God Class.
+- **Refactorings Aplicados:** Extract Interface.
+- **Tipo/Categoría:** Class Refactoring.
+- **Descripción:** Se crearon las interfaces CardiovascularMetrics y MetabolicMetrics para separar las funcionalidades relacionadas con el cálculo del peso ideal y la tasa metabólica basal. Esto reduce la complejidad y hace que el código sea más modular.
+- **Cambios:** Interfaz CardiovascularMetrics, Interfaz MetabolicMetrics, HealthCalcImpl, Test Unitarios, Modelo Vista-Controlador.
+- **Cambios Manuales:** 13 líneas de código.
